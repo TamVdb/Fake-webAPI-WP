@@ -11,3 +11,8 @@ export function fetchPosts(page, perPage) {
 
    return articles.slice(indexStart, indexEnd);
 }
+
+export function fetchById(id) {
+
+   return articles.find(article => article.id === id);
+}

@@ -1,7 +1,22 @@
-import { fetchPosts } from '../services/wp_service.js';
+import { fetchById, fetchPosts } from '../services/wp_service.js';
 
 export function getById_wpPost(req, res) {
-   res.sendStatus(501);
+   // Gestion du paramètre "id"
+   const articleId = parseInt(req.params.id);
+   console.log(articleId);
+
+
+   // Obtenir l'article via le service
+   const article = fetchById(articleId);
+   console.log(article);
+
+
+   // Envoyer une réponse en fonction de si l'article existe ou pas
+   if (!article) {
+      res.sendStatus(404);
+   } else {
+      res.status(200).json(article);
+   }
 }
 
 export function getAll_wpPost(req, res) {
