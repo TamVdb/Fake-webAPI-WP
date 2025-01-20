@@ -1,11 +1,15 @@
 import express from 'express';
 import demoRouter from './routes/demo_router.js';
 import wpRouter from './routes/wp_router.js';
+import cors from 'cors';
 
 
 // Initialisation de la Web API
 const app = express();
 app.use(express.json());
+app.use(cors());
+
+
 const { PORT } = process.env;
 
 // Définition des routes
